@@ -1,9 +1,9 @@
 package com.smartdengg.ultra;
 
 import com.smartdengg.ultra.annotation.Http;
-import rx.Observable;
-import rx.Single;
-import rx.plugins.RxJavaHooks;
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.plugins.RxJavaPlugins;
 
 /**
  * 创建时间: 2017/03/23 12:13 <br>
@@ -31,21 +31,21 @@ public class UltraParser<Request> {
     this.request = request;
   }
 
+  public Flowable<RequestEntity<Request>> parseAsFlowable() {
+    try {
+      return new RequestEntityBuilder<>(request).build().asFlowable();
+    } catch (Exception e) {
+      RxJavaPlugins.onError(e);
+      return Flowable.error(e);
+    }
+  }
+
   public Observable<RequestEntity<Request>> parseAsObservable() {
     try {
       return new RequestEntityBuilder<>(request).build().asObservable();
     } catch (Exception e) {
-      RxJavaHooks.onError(e);
+      RxJavaPlugins.onError(e);
       return Observable.error(e);
-    }
-  }
-
-  public Single<RequestEntity<Request>> parseAsSingle() {
-    try {
-      return new RequestEntityBuilder<>(request).build().asSingle();
-    } catch (Exception e) {
-      RxJavaHooks.onError(e);
-      return Single.error(e);
     }
   }
 }
