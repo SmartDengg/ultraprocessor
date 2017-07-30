@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SmartDengg_UltraProcessor.iml" filepath="$PROJECT_DIR$/SmartDengg_UltraProcessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ultraprocessor/ultraprocessor.iml" filepath="$PROJECT_DIR$/ultraprocessor/ultraprocessor.iml" />
+    </modules>
+  </component>
+</project>
